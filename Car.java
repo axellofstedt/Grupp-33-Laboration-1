@@ -1,5 +1,8 @@
 import java.awt.*;
 
+// turnleft, gas o break, throw, abstrakt class för gemensamma beteenden (i Movable?),
+// increment, decrement
+
 public class Car implements Movable {
     protected int nrDoors;
     protected double enginePower;
@@ -7,7 +10,7 @@ public class Car implements Movable {
     protected Color color;
     protected String modelName;
     private int direction = 0;
-    double x, y = 0;
+    protected double x, y = 0;
 
     public void move() {
         switch (direction) {
@@ -27,11 +30,11 @@ public class Car implements Movable {
     }
 
     public void turnLeft() {
-        direction--;
+        direction = (direction + 3) % 4;
     }
 
     public void turnRight() {
-        direction++;
+        direction = (direction + 1) % 4;
     }
 
     public int getNrDoors(){
