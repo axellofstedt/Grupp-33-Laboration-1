@@ -1,8 +1,5 @@
 import java.awt.*;
 
-// gas o break, throw, abstrakt class för gemensamma beteenden (i Movable? - Nej!),
-// increment, decrement
-
 abstract class Car implements Movable {
     protected int nrDoors;
     protected double enginePower;
@@ -93,8 +90,8 @@ abstract class Car implements Movable {
     }
 
     public static void main(String[] args) {
-
-        Saab95 v = new Saab95();
+        /*
+        Volvo240 v = new Volvo240();
         v.move();
         v.gas(1);
         System.out.println(v.getCurrentSpeed());
@@ -106,6 +103,6 @@ abstract class Car implements Movable {
         v.turnRight();
         v.move();
         System.out.println(v.x + " " + v.y);
-
+        */
     }
 }

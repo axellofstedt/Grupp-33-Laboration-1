@@ -6,11 +6,12 @@ class Volvo240Test {
 
     @Test
     void speedTest() {
-        Volvo240 volvo = new Volvo240();
-        volvo.gas(1);
-        assertEquals(1.25, volvo.getCurrentSpeed());
-        volvo.brake(1);
-        assertEquals(0, volvo.getCurrentSpeed());
+        Volvo240 v = new Volvo240();
+        v.gas(1);
+        assertEquals(1.25, v.getCurrentSpeed());
+        assertThrows(IllegalArgumentException.class, () -> v.gas(2));
+        v.brake(1);
+        assertEquals(0, v.getCurrentSpeed());
     }
     @Test
     void positionTest() {
@@ -33,6 +34,8 @@ class Volvo240Test {
     }
     @Test
     void testCurrentSpeed() {
+        // Checks that speed can't go beyond the car's engine power
+        // and that using Car.gas won't decrease the speed
         Volvo240 v = new Volvo240();
         double tempSpeed = v.getCurrentSpeed();
         for (int n = 0; n < 1000; n++) {

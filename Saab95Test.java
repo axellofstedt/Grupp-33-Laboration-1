@@ -4,12 +4,12 @@ class Saab95Test {
 
     @org.junit.jupiter.api.Test
     void testSpeeds() {
-        Saab95 saab = new Saab95();
-        saab.gas(1);
-        assertEquals(1.25, saab.getCurrentSpeed());
-        assertThrows(IllegalArgumentException.class, () -> saab.gas(2));
-        saab.brake(1);
-        assertEquals(0, saab.getCurrentSpeed());
+        Saab95 s = new Saab95();
+        s.gas(1);
+        assertEquals(1.25, s.getCurrentSpeed());
+        assertThrows(IllegalArgumentException.class, () -> s.gas(2));
+        s.brake(1);
+        assertEquals(0, s.getCurrentSpeed());
     }
 
     @org.junit.jupiter.api.Test
