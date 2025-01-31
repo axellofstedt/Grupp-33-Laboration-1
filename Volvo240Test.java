@@ -39,6 +39,6 @@ class Volvo240Test {
             v.gas(1);
         }
         assertTrue(tempSpeed <= v.getCurrentSpeed());
-        assertTrue(v.getCurrentSpeed() <= 100);
+        assertTrue(v.getCurrentSpeed() <= v.getEnginePower());
     }
 }

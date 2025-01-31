@@ -1,9 +1,9 @@
 import java.awt.*;
 
-// turnleft, gas o break, throw, abstrakt class för gemensamma beteenden (i Movable?),
+// gas o break, throw, abstrakt class för gemensamma beteenden (i Movable? - Nej!),
 // increment, decrement
 
-public class Car implements Movable {
+abstract class Car implements Movable {
     protected int nrDoors;
     protected double enginePower;
     protected double currentSpeed;
@@ -65,10 +65,38 @@ public class Car implements Movable {
         currentSpeed = 0;
     }
 
+    abstract double speedFactor();
+
+    public void gas(double amount) {
+        if (0 <= amount && amount <= 1) {
+            incrementSpeed(amount);
+        } else {
+            throw new IllegalArgumentException("Inappropriate value");
+        }
+    }
+
+    public void brake(double amount){
+        if (0 <= amount && amount <= 1) {
+            decrementSpeed(amount);
+        }
+        else {
+            throw new IllegalArgumentException("Inappropriate value");
+        }
+    }
+
+    protected void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+    }
+
+    protected void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    }
+
     public static void main(String[] args) {
-        Volvo240 v = new Volvo240();
+
+        Saab95 v = new Saab95();
         v.move();
-        v.gas(5);
+        v.gas(1);
         System.out.println(v.getCurrentSpeed());
         v.move();
         System.out.println(v.x + " " + v.y);
@@ -78,5 +106,6 @@ public class Car implements Movable {
         v.turnRight();
         v.move();
         System.out.println(v.x + " " + v.y);
+
     }
 }
